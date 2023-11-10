@@ -71,7 +71,6 @@ const CartPage = () => {
     }
   };
 
-
   return (
     <Box
       className="h-100 h-custom"
@@ -104,7 +103,12 @@ const CartPage = () => {
                 {cartItems.map((item, key) => (
                   <Box
                     key={key}
-                    sx={{ display: "flex", alignItems: "center", mb: 5 }}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: { xs: "center", lg: "left" },
+                      mb: 5,
+                    }}
                   >
                     <Box sx={{ flexShrink: 0 }}></Box>
                     <Box sx={{ flexGrow: 1, ml: 3 }}>
@@ -112,7 +116,13 @@ const CartPage = () => {
                         {item.name}
                       </Typography>
 
-                      <Box sx={{ display: "flex", alignItems: "center" }}>
+                      <Box
+                        sx={{
+                          display: { xs: "block", lg: "flex" },
+                          alignItems: "center",
+                          textAlign: { xs: "center", lg: "left" },
+                        }}
+                      >
                         {
                           <CardMedia
                             component="img"
@@ -120,7 +130,8 @@ const CartPage = () => {
                               height: "100px",
                               width: "100px",
                               objectFit: "contain",
-                            }} // Added objectFit for proper scaling
+                              margin: "10px auto",
+                            }}
                             image={item.image}
                             alt={item.name}
                           />
@@ -128,9 +139,7 @@ const CartPage = () => {
                         <Typography
                           variant="body1"
                           className="fw-bold"
-                          mr={5}
-                          pr={3}
-                          whiteSpace={{ xs: "nowrap" }}
+                          whiteSpace={{ xs: "normal", lg: "nowrap" }}
                         >
                           {item.price} €
                         </Typography>
@@ -195,7 +204,7 @@ const CartPage = () => {
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                   <Button
                     variant="contained"
-                    color="primary"
+                    color="error"
                     onClick={() => dispatch(emptyCart())}
                   >
                     Empty Cart
