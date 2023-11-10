@@ -30,6 +30,12 @@ export default function ProductCard({ product }) {
       marginRight: theme.spacing(1),
     },
   }));
+  // Check if the product is already in the cart and get its quantity
+  const cartItems = useSelector((state) => state.entities.cart.items);
+  const isInCart = cartItems.find((item) => item.id === product.id);
+  // Disable the button if the product is already in the cart and the quantity is equal or greater than the inventory
+  const disableAddToCart = isInCart && isInCart.quantity >= product.inventory;
+
   return (
     <Card sx={{ maxWidth: 250, width: 250 }}>
       <Link to={"/Products/" + product.id}>
@@ -45,9 +51,9 @@ export default function ProductCard({ product }) {
         sx={{
           color: "red",
           fontWeight: "bold",
-          height: "20px", // Set a fixed height for the alert area
+          height: "20px",
           marginTop: "8px",
-          visibility: product.inventory < 10 ? "visible" : "hidden", // Hide or show the alert
+          visibility: product.inventory < 10 ? "visible" : "hidden",
         }}
       >
         <ErrorOutlineIcon
@@ -71,6 +77,7 @@ export default function ProductCard({ product }) {
             size="small"
             startIcon={<AddShoppingCartIcon />}
             onClick={() => addToPannier(product)}
+            disabled={disableAddToCart}
           >
             Add to Cart
           </StyledButton>

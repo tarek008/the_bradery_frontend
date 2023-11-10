@@ -158,8 +158,14 @@ const CartPage = () => {
                           value={item.quantity}
                           onChange={(e) => handleQuantityChange(e, item)}
                           type="number"
+                          readOnly
                         />
-                        <Button onClick={() => addItemToCart(item)}>+</Button>
+                        <Button
+                          disabled={item.inventory === item.quantity}
+                          onClick={() => addItemToCart(item)}
+                        >
+                          +
+                        </Button>
                         <Typography variant="body1" className="fw-bold">
                           Total Price: {(item.quantity * item.price).toFixed(2)}{" "}
                           €
