@@ -179,7 +179,7 @@ const CartPage = () => {
                 <Box
                   sx={{
                     display: "flex",
-                    justifyContent: "between",
+                    justifyContent: "space-between",
                     p: 2,
                     mb: 2,
                     backgroundColor: "#e1f5fe",
@@ -189,7 +189,7 @@ const CartPage = () => {
                     Total:
                   </Typography>
                   <Typography variant="h5" className="fw-bold">
-                    {Total.toFixed(2)} DT
+                    {Total.toFixed(2)} €
                   </Typography>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>

@@ -32,7 +32,6 @@ const Navbar = () => {
 
             <Grid item xs>
               {" "}
-              {/* Middle, for the image */}
               <Box display="flex" justifyContent="center">
                 <img
                   src="logo_thebradery.png"

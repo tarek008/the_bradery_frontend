@@ -13,7 +13,7 @@ function ProductLayout() {
   }, [dispatch]);
 
   const products = useSelector((state) => state.entities.products.list);
-  const pageSize = 12;
+  const pageSize = 15;
   const pageCount = Math.ceil(products.length / pageSize);
   const [currentPage, setCurrentPage] = useState(1);
   const startIdx = (currentPage - 1) * pageSize;
@@ -30,7 +30,7 @@ function ProductLayout() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} justifyContent="center">
           {currentProducts.map((product) => (
-            <Grid key={product.id} item xs={12} sm={6} md={3} lg={3}>
+            <Grid key={product.id} item xs={12} sm={6} md={3} lg={2.4}>
               <ProductCard product={product} />
             </Grid>
           ))}

@@ -14,6 +14,7 @@ import Paper from "@mui/material/Paper";
 import styles from "./style.js";
 import { Grid } from "@mui/material";
 import Item from "@mui/material/Grid";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const MyProfile = () => {
   const theme = useTheme();
@@ -22,6 +23,8 @@ const MyProfile = () => {
   const UserId = useSelector((state) => state.entities.users.userId);
   const [user, setUser] = React.useState([]);
   const [commandes, setCommandes] = React.useState([]);
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log(isSmallScreen);
 
   useEffect(() => {
     dispatch(loadUserById(UserId))
@@ -69,10 +72,24 @@ const MyProfile = () => {
             <Table sx={{ minWidth: 650 }} aria-label="nested table">
               <TableHead sx={{ bgcolor: theme.palette.primary.main }}>
                 <TableRow>
-                  <TableCell>Commande ID</TableCell>
-                  <TableCell align="right">Products (Nested Table)</TableCell>
-                  <TableCell align="right">Total Quantity</TableCell>
-                  <TableCell align="right">Total Price</TableCell>
+                  {!isSmallScreen && (
+                    <TableCell style={styles.TableHeaderCells}>
+                      Commande ID
+                    </TableCell>
+                  )}
+                  <TableCell align="center" style={styles.TableHeaderCells}>
+                    Products (Nested Table)
+                  </TableCell>
+                  {!isSmallScreen && (
+                    <TableCell align="right" style={styles.TableHeaderCells}>
+                      Total Quantity
+                    </TableCell>
+                  )}
+                  {!isSmallScreen && (
+                    <TableCell align="right" style={styles.TableHeaderCells}>
+                      Total Price
+                    </TableCell>
+                  )}
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -86,9 +103,11 @@ const MyProfile = () => {
                   commandes.map((commande) => (
                     <React.Fragment key={commande.commande_id}>
                       <TableRow>
-                        <TableCell component="th" scope="row">
-                          {commande.commande_id}
-                        </TableCell>
+                        {!isSmallScreen && (
+                          <TableCell component="th" scope="row">
+                            {commande.commande_id}
+                          </TableCell>
+                        )}
                         <TableCell align="right">
                           {/* Nested table for products */}
                           <Table size="small">
@@ -111,15 +130,24 @@ const MyProfile = () => {
                                   </TableCell>
                                 </TableRow>
                               ))}
+                              {isSmallScreen && (
+                                <TableRow style={styles.TotalPrice}>
+                                  Total Price : {commande.total_price} €
+                                </TableRow>
+                              )}
                             </TableBody>
                           </Table>
                         </TableCell>
-                        <TableCell align="right">
-                          {commande.total_quantity}
-                        </TableCell>
-                        <TableCell align="right">
-                          {commande.total_price}
-                        </TableCell>
+                        {!isSmallScreen && (
+                          <TableCell align="right">
+                            {commande.total_quantity}
+                          </TableCell>
+                        )}
+                        {!isSmallScreen && (
+                          <TableCell align="right">
+                            {commande.total_price}
+                          </TableCell>
+                        )}
                       </TableRow>
                     </React.Fragment>
                   ))

@@ -26,6 +26,12 @@ const styles = {
     fontSize: "20px",
     fontWeight: "bold",
   },
+  TableHeaderCells: { color: "white", fontWeight: "bold" },
+  TotalPrice: {
+    color: "Black",
+    fontWeight: "bold",
+    fontSize: "15px",
+  },
 };
 
 export default styles;
