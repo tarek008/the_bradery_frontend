@@ -3,7 +3,8 @@ The_bradery_frontend est dédié à la gestion d'un système de panier et au pro
 
 # Preview
 
-Pour voir la version Live de l'application, visitez le site [The_bradery](https://the-bradery-frontend.vercel.app/) site.
+Pour voir la version Live de l'application, visitez le site [The_bradery](https://the-bradery-frontend.vercel.app/) site.  
+![usage example](https://github.com/tarek008/the_bradery_frontend/blob/main/public/the_bradery_frontend.png)
 
 ## Development
 
