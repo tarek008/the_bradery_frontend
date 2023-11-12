@@ -3,8 +3,8 @@ describe("template spec", () => {
     cy.visit("http://localhost:3000");
     cy.viewport(1600, 1000);
     cy.wait(1000);
-    cy.get("#email-input").type("tarek@gmail.com", { delay: 300 }); // extended timeout for typing
-    cy.get("#password-input").type("123456789", { delay: 300 }); // Adds a 100ms delay between key presses
+    cy.get("#email-input").type("tarek@gmail.com", { delay: 300 });
+    cy.get("#password-input").type("123456789", { delay: 300 });
     cy.contains("button", "Me Connecter").click();
     cy.wait(5000);
     cy.get('[data-testid="my-account-link"]').click();
