@@ -212,6 +212,7 @@ const CartPage = () => {
                     variant="contained"
                     color="error"
                     onClick={() => dispatch(emptyCart())}
+                    data-testid="empty-Cart"
                   >
                     Empty Cart
                   </Button>

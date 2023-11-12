@@ -78,6 +78,7 @@ export default function ProductCard({ product }) {
             startIcon={<AddShoppingCartIcon />}
             onClick={() => addToPannier(product)}
             disabled={disableAddToCart}
+            data-testid="AddtoCart"
           >
             Add to Cart
           </StyledButton>

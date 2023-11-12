@@ -46,25 +46,35 @@ const Navbar = () => {
               {/* Right side, for buttons or other elements */}
               <Box display="flex" gap={2}>
                 {UserConnected ? (
-                  <Link to="/cart">
+                  <Link to="/cart" data-testid="Cart-link">
                     <LocalGroceryStoreIcon /> ({CartNumber})
                   </Link>
                 ) : (
                   ""
                 )}
 
-                <Link style={styles.menuItem} to={"/Products"}>
+                <Link
+                  style={styles.menuItem}
+                  to={"/Products"}
+                  data-testid="products-link"
+                >
                   Products
                 </Link>
+
+                <Link
+                  style={styles.menuItem}
+                  to={"/MyProfile"}
+                  data-testid="my-account-link"
+                >
+                  My account
+                </Link>
+
                 {UserConnected ? (
-                  <Link style={styles.menuItem} to={"/MyProfile"}>
-                    My account
-                  </Link>
-                ) : (
-                  ""
-                )}
-                {UserConnected ? (
-                  <Link style={styles.menuItem} onClick={handleLogout}>
+                  <Link
+                    style={styles.menuItem}
+                    onClick={handleLogout}
+                    data-testid="logout"
+                  >
                     Logout
                   </Link>
                 ) : (
