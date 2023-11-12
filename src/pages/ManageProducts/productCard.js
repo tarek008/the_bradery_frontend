@@ -8,13 +8,17 @@ import { useSelector } from "react-redux";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { styled } from "@mui/material/styles";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { Snackbar, Alert } from "@mui/material";
+import { useState } from "react";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
   const UserConnected = useSelector((state) => state.entities.users.userId);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const addToPannier = (product) => {
     dispatch(addToCart(product));
+    setSnackbarOpen(true);
   };
   const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -72,16 +76,28 @@ export default function ProductCard({ product }) {
           </Grid>
         </Grid>
         {UserConnected ? (
-          <StyledButton
-            variant="contained"
-            size="small"
-            startIcon={<AddShoppingCartIcon />}
-            onClick={() => addToPannier(product)}
-            disabled={disableAddToCart}
-            data-testid="AddtoCart"
-          >
-            Add to Cart
-          </StyledButton>
+          <div>
+            <StyledButton
+              variant="contained"
+              size="small"
+              startIcon={<AddShoppingCartIcon />}
+              onClick={() => addToPannier(product)}
+              disabled={disableAddToCart}
+              data-testid="AddtoCart"
+            >
+              Add to Cart
+            </StyledButton>
+            {/* Snackbar Component */}
+            <Snackbar
+              open={snackbarOpen}
+              autoHideDuration={2000}
+              onClose={() => setSnackbarOpen(false)}
+            >
+              <Alert severity="success" sx={{ width: "100%" }}>
+                Item added to your Cart!
+              </Alert>
+            </Snackbar>
+          </div>
         ) : (
           ""
         )}
