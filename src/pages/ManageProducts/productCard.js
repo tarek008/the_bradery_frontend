@@ -42,14 +42,12 @@ export default function ProductCard({ product }) {
 
   return (
     <Card sx={{ maxWidth: 250, width: 250 }}>
-      <Link to={"/Products/" + product.id}>
-        <CardMedia
-          component="img"
-          height="200px"
-          image={product.image}
-          alt={product.name}
-        />
-      </Link>
+      <CardMedia
+        component="img"
+        height="200px"
+        image={product.image}
+        alt={product.name}
+      />
       <Typography
         variant="body2"
         sx={{
