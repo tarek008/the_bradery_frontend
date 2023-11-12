@@ -9,7 +9,6 @@ const Footer = () => {
         px: 3,
         bgcolor: "#203059",
         color: "white",
-        position: "static",
         bottom: 0,
         left: 0,
         width: "100%",

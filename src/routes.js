@@ -12,16 +12,22 @@ import { Box } from "@mui/material";
 const MyAppRoutes = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/MyProfile" element={<MyProfile />} />
-        <Route path="/Products" element={<ProductLayout />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/payment-success" element={<PaymentConfirmed />} />
-      </Routes>
-      <Footer />
+      <Box
+        sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      >
+        <Navbar />
+        <Box component="main" sx={{ flexGrow: 1, width: "100%" }}>
+          <Routes>
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/MyProfile" element={<MyProfile />} />
+            <Route path="/Products" element={<ProductLayout />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/payment-success" element={<PaymentConfirmed />} />
+          </Routes>
+        </Box>
+        <Footer />
+      </Box>
     </BrowserRouter>
   );
 };

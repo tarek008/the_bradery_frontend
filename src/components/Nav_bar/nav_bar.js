@@ -60,14 +60,17 @@ const Navbar = () => {
                 >
                   Products
                 </Link>
-
-                <Link
-                  style={styles.menuItem}
-                  to={"/MyProfile"}
-                  data-testid="my-account-link"
-                >
-                  My account
-                </Link>
+                {UserConnected ? (
+                  <Link
+                    style={styles.menuItem}
+                    to={"/MyProfile"}
+                    data-testid="my-account-link"
+                  >
+                    My account
+                  </Link>
+                ) : (
+                  ""
+                )}
 
                 {UserConnected ? (
                   <Link
